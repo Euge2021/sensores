@@ -1,0 +1,27 @@
+[
+    {
+        "tipo": "PanelSolar",
+        "nombre": "Panel Solar Residencial",
+        "marca": "EcoSun",
+        "precio": 250000,
+        "stock": 15,
+        "potencia_w": 450,
+        "eficiencia": 21.5
+    },
+    {
+        "tipo": "PanelSolar",
+        "nombre": "Panel Solar Industrial",
+        "marca": "GreenPower",
+        "precio": 500000,
+        "stock": 8,
+        "potencia_w": 600,
+        "eficiencia": 23.5
+    },
+    {
+        "tipo": "DispositivoEcologico",
+        "nombre": "Lámpara LED",
+        "marca": "EcoLight",
+        "precio": 15000,
+        "stock": 30
+    }
+]
