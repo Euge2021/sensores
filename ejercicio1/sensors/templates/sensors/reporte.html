@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de sensores</title>
+    <style>
+        body {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            font-family: Arial, sans-serif;
+            color: #222;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 0.7rem;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f1f1;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                margin-top: 1rem;
+            }
+
+            th, td {
+                padding: 0.45rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Reporte de sensores EcoTech Solutions</h1>
+
+    <p>Umbral: {{ umbral|floatformat:1 }} °C</p>
+    <p>Promedio de la planta: {{ promedio|floatformat:2 }} °C</p>
+
+    <h2>Sensores que superan el umbral</h2>
+
+    {% if sensores_alerta %}
+        <ul>
+            {% for sensor_id in sensores_alerta %}
+                <li>{{ sensor_id }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay sensores que superen el umbral.</p>
+    {% endif %}
+
+    <h2>Lecturas normalizadas</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID del sensor</th>
+                <th>Temperatura</th>
+                <th>Ubicación</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sensor in lecturas %}
+                <tr>
+                    <td>{{ sensor.sensor_id }}</td>
+                    <td>{{ sensor.temperatura|floatformat:1 }} °C</td>
+                    <td>{{ sensor.ubicacion }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
