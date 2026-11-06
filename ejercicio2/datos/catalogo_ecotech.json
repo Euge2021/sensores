@@ -1,0 +1,18 @@
+[
+    {
+        "tipo": "DispositivoEcologico",
+        "nombre": "Lámpara LED",
+        "marca": "EcoLight",
+        "precio": 15000,
+        "stock": 20
+    },
+    {
+        "tipo": "PanelSolar",
+        "nombre": "Panel Solar 500W",
+        "marca": "SolarTech",
+        "precio": 250000,
+        "stock": 10,
+        "potencia_kw": 0.5,
+        "eficiencia": 95
+    }
+]
