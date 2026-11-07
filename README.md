@@ -16,3 +16,12 @@ Para la división de equipamiento sustentable de EcoTech Solutions, se requiere 
 Punto A: Dominio del Catálogo y Reglas de Inventario: Construye la jerarquía orientada a objetos para los productos ecológicos. Diseña una clase de excepción personalizada StockInvalidoError y aplícala dentro de la clase base DispositivoEcológico para impedir que el stock tome valores negativos mediante encapsulamiento explícito. Desarrolla la clase especializada PanelSolar, incorporando sus atributos específicos mediante herencia y aplicando polimorfismo para personalizar la emisión de su ficha técnica comercial.
 
 Punto B: Persistencia y Gestión del Catálogo: Implementa la clase GestorInventario con el método guardar_catalogo_json(lista_dispositivos, ruta_archivo) capaz de serializar y almacenar en catalogo_ecotech.json las instancias creadas en el Punto A. Incluye un bloque de prueba donde se verifique la captura controlada de StockInvalidoError ante un intento de asignación de stock erróneo, finalizando con la exportación exitosa de los productos válidos al archivo JSON.
+
+
+Ejercicio 3 - Auditoría con Tests Unitarios e Integración Web (40 puntos)
+
+Previo a la puesta en producción, EcoTech Solutions debe certificar la precisión del algoritmo de cálculo de huella de carbono industrial. Tras auditar su comportamiento mediante pruebas automatizadas, dicho algoritmo debe integrarse en la tubería de datos que alimenta la interfaz web administrativa de la empresa.
+
+Punto A: Auditoría de Algoritmo de Emisiones ( unittest ): A partir de la función calcular_emisiones_carbono(consumo_kwh, factor_emision=0.4) (la cual eleva ValueError si el consumo es negativo), implementa la clase de prueba TestCalculoEmisiones(unittest.TestCase). Diseña los casos de prueba necesarios para validar tanto la exactitud numérica del cálculo ante valores nominales como la correcta elevación de la excepción ante consumos fuera de rango.
+
+Punto B: Procesamiento de Métricas y Renderizado Web: Incorpora la función calcular_emisiones_carbono en la función obtener_metricas_consumo(registros), procesando un historial de consumos por planta industrial para determinar el total global de emisiones y la planta de mayor consumo. Por último, diseña la función de vista en Django vista_panel_sustentabilidad(request) que invoque dicho procesamiento y proporcione el diccionario de contexto listo para ser renderizado en la plantilla sustentabilidad/panel.html.
