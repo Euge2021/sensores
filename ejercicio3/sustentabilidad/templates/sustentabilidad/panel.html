@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Panel de Sustentabilidad</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #176b45;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        main {
+            width: 85%;
+            margin: 30px auto;
+        }
+
+        .tarjetas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .tarjeta {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .valor {
+            color: #176b45;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #dcece2;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Panel de Sustentabilidad</h1>
+        <p>EcoTech Solutions</p>
+    </header>
+
+    <main>
+
+        <section class="tarjetas">
+
+            <div class="tarjeta">
+                <h3>Emisiones globales</h3>
+
+                <p class="valor">
+                    {{ emisiones_totales }} kg CO₂
+                </p>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Planta de mayor consumo</h3>
+
+                <p class="valor">
+                    {{ planta_mayor_consumo|default:"Sin registros" }}
+                </p>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Consumo máximo</h3>
+
+                <p class="valor">
+                    {{ consumo_maximo }} kWh
+                </p>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Cantidad de plantas</h3>
+
+                <p class="valor">
+                    {{ cantidad_plantas }}
+                </p>
+            </div>
+
+        </section>
+
+        <section>
+
+            <h2>Detalle de consumo por planta</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Planta</th>
+                        <th>Consumo (kWh)</th>
+                        <th>Emisiones (kg CO₂)</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for planta in detalle_plantas %}
+
+                    <tr>
+                        <td>{{ planta.planta }}</td>
+
+                        <td>{{ planta.consumo_kwh }}</td>
+
+                        <td>{{ planta.emisiones_kg }}</td>
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="3">
+                            No hay registros disponibles.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
